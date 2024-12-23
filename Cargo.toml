@@ -1,0 +1,12 @@
+[package]
+name = "dep_tracker"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+clap = { version = "4.0", features = ["derive"] } # For CLI argument parsing
+reqwest = {version = "0.11", features = ["json"]} # For making HTTP requests
+serde = { version = "1.0", features = ["derive"] } # For JSON parsing
+indicatif = "0.16" # For progress bars and spinners
+tokio = { version = "1.25", features = ["full"] } # For async runtime
+cargo_metadata = "0.15"
