@@ -27,7 +27,16 @@ async fn main() {
         println!("Dependency File: {}", file_path);
 
         match detect_file_type(file_path) {
-            Some("Cargo.toml") => parse_cargo_toml(file_path).await,
+            Some("Cargo.toml") => {
+                let cargo_result = parse_cargo_toml(file_path).await;
+                for result in cargo_result {
+                    if result.current_version != result.latest_version {
+                        println!("Name: {}", result.name);
+                        println!("Current Version: {}", result.current_version);
+                        println!("Latest Version: {}", result.latest_version);
+                    } 
+                }
+            },
             _ => println!("Unsupported file type."),
         }
     }
